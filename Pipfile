@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 flask = "2.1.2"
 "rpi.bme280" = "0.2.4"
-flask-wtf = "*"
+flask-wtf = "1.0.1"
 
 [dev-packages]
 
