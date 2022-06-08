@@ -1,5 +1,5 @@
 from os import environ
 
 
-class Config():
-    SECREST_KEY=environ.get('FLASK_KEY')
+class Config(object):
+    SECRET_KEY=environ.get('FLASK_KEY') or "dupa"

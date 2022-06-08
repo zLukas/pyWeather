@@ -1,13 +1,23 @@
 from flask import render_template
 from app import app
+from flask import render_template
+from flask import redirect
+from app.forms import MeasurementForm
 
-@app.route("/")
+
+
+@app.route("/", methods=["GET"])
+def go_to_measurements():
+    return redirect("/measurements")
+
+@app.route("/measurements", methods=["GET"])
 def measurements():
-    #TODO: dopisac pomiary z BME, i zrenderowac tempalate
-    # Template powinien sie odswiezac co 1 min
-    pass
+    form = MeasurementForm()
+    form.humidityBox.data="50%"
+    form.pressureBox.data="1010 hpa"
+    form.temperatureBox.data="20.0 C"
+    return render_template('measurements.html', form=form)
 
-@app.route("/api/v1/measurements/<name>"):
-def get_measurement(name):
-    # TODO: get measurenments by name via command line
-    pass
+
+
+# TODO: get measurenments by name via command line
