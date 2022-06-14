@@ -3,7 +3,7 @@ from app import app
 from flask import render_template
 from flask import redirect
 from app.forms import MeasurementForm
-from sensor import bme
+from .sensor import bme
 
 @app.route("/", methods=["GET"])
 def go_to_measurements():

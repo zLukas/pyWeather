@@ -12,7 +12,7 @@ class Bme():
 		self.__calibration_params = bme280.load_calibration_params(self.__bus, self.__i2c_address)
 
 	def read_measurements(self):
-		data = bme280.sample( self.__bus, self.__address, self.__calibration_params)
+		data = bme280.sample( self.__bus, self.__i2c_address, self.__calibration_params)
 		return data
 
 
