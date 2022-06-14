@@ -3,7 +3,7 @@ import bme280
 from time import sleep
 
 
-class Sensor():
+class Bme():
 	def __init__(self):
 		self.__port = 1
 		self.__i2c_address= 0x76
@@ -14,3 +14,6 @@ class Sensor():
 	def read_measurements(self):
 		data = bme280.sample( self.__bus, self.__address, self.__calibration_params)
 		return data
+
+
+bme=Bme()
