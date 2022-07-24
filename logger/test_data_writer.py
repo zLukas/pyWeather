@@ -1,6 +1,6 @@
 import pytest
-from logger import is_file_valid
-from logger import log_data
+from data_writer import is_file_valid
+from data_writer import write_data_to_file
 from datetime import datetime
 from datetime import timedelta
 from os import remove
@@ -91,17 +91,17 @@ def test_log_data_add_record_to_existing_file():
     assert test_record_to_write == file_record
 
 
-def test_log_data_add_several_records_new_file():
+def test_write_data_to_file_add_several_records_new_file():
     # Arrange
     header="col1, col2, col3"
     test_record_to_write1="1, 2, 3, 4"
     test_record_to_write2="5, 6, 7, 8"
     test_record_to_write3="9, 10, 11, 12"
     # Act
-    log_data(TEST_FILE_NAME, header)
-    log_data(TEST_FILE_NAME, test_record_to_write1)
-    log_data(TEST_FILE_NAME, test_record_to_write2)
-    log_data(TEST_FILE_NAME, test_record_to_write3)
+    write_data_to_file(TEST_FILE_NAME, header)
+    write_data_to_file(TEST_FILE_NAME, test_record_to_write1)
+    write_data_to_file(TEST_FILE_NAME, test_record_to_write2)
+    write_data_to_file(TEST_FILE_NAME, test_record_to_write3)
     file_lines=[]
     file_lines_num=0
     with open(TEST_FILE_NAME) as f:
@@ -123,7 +123,7 @@ def test_log_data_add_several_records_new_file():
     assert test_record_to_write2 == file_record2
     assert test_record_to_write3 == file_record3
 
-def test_log_data_add_several_records_existing_file():
+def test_lwrite_data_to_file_add_several_records_existing_file():
     # Arrange
     header="col1, col2, col3"
     with open(TEST_FILE_NAME, 'w') as t:
@@ -133,9 +133,9 @@ def test_log_data_add_several_records_existing_file():
     test_record_to_write2="5, 6, 7, 8"
     test_record_to_write3="9, 10, 11, 12"
     # Act
-    log_data(TEST_FILE_NAME, test_record_to_write1)
-    log_data(TEST_FILE_NAME, test_record_to_write2)
-    log_data(TEST_FILE_NAME, test_record_to_write3)
+    write_data_to_file(TEST_FILE_NAME, test_record_to_write1)
+    write_data_to_file(TEST_FILE_NAME, test_record_to_write2)
+    write_data_to_file(TEST_FILE_NAME, test_record_to_write3)
     file_lines=[]
     file_lines_num=0
     with open(TEST_FILE_NAME) as f:
