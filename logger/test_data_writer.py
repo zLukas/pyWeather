@@ -1,6 +1,6 @@
 import pytest
-from data_writer import is_file_valid
-from data_writer import write_data_to_file
+from .data_writer import is_file_valid
+from .data_writer import write_data_to_file
 from datetime import datetime
 from datetime import timedelta
 from os import remove
@@ -42,12 +42,12 @@ def test_is_file_valid_old_file_exist():
     assert False == test_result
 
 
-def test_log_data_no_file_proper_input_data():
+def test_write_data_to_file_no_file_proper_input_data():
     # Arrange
     header="col1,col2,col3"
 
     # Act 
-    log_data(TEST_FILE_NAME, header)
+    write_data_to_file(TEST_FILE_NAME, header)
     file_lines=[]
     file_lines_num=0
     with open(TEST_FILE_NAME) as f:
@@ -63,7 +63,7 @@ def test_log_data_no_file_proper_input_data():
     assert 1 == file_len 
     assert header == file_header 
 
-def test_log_data_add_record_to_existing_file():
+def test_write_data_to_file_add_record_to_existing_file():
     # Arrange
     header="col1,col2,col3"
     with open(TEST_FILE_NAME, 'w') as t:
@@ -72,7 +72,7 @@ def test_log_data_add_record_to_existing_file():
     
     test_record_to_write="1, 2, 3, 4"
     # Act
-    log_data(TEST_FILE_NAME, test_record_to_write)
+    write_data_to_file(TEST_FILE_NAME, test_record_to_write)
     file_lines=[]
     file_lines_num=0
     with open(TEST_FILE_NAME) as f:
