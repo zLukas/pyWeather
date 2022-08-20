@@ -7,6 +7,7 @@ name = "pypi"
 flask = "2.1.2"
 "rpi.bme280" = "0.2.4"
 flask-wtf = "1.0.1"
+pytest = "7.1.2"
 
 [dev-packages]
 
