@@ -1,7 +1,7 @@
 from unittest.mock import Mock
 import sys
 mock = Mock()
-sys.modules['pyDrive.googleApi'] = mock
+sys.modules['pyDrive.GoogleApi'] = mock
 
 from loger import LogWriter
 from datetime import datetime
@@ -10,7 +10,6 @@ from os import remove
 
 date=str(datetime.now().date()).replace("-","_")
 TEST_FILE_NAME=date+"_py_weather_logs.csv"
-
 
 
 def test_is_file_valid_file_no_file():

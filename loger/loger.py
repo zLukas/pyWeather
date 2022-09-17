@@ -1,3 +1,9 @@
+from .log_writer import LogWriter
 
-def run_logger():
-    pass
+
+
+class Logger():
+    def __init__(self):
+        self.data_writer=LogWriter()
+
+        

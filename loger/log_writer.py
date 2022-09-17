@@ -1,5 +1,4 @@
 from datetime import datetime
-from datetime import timedelta
 from os.path import exists
 
 
