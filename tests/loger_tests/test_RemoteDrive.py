@@ -1,23 +1,30 @@
-
-import sys
+from unittest import TestCase
+from unittest.mock import patch
 from loger import RemoteDrive
 
 
+class Test_Remotedrive(TestCase):
 
-def push_data_script_not_exist():
-    pass
+    def test_init_class(self):
+        test_drive = RemoteDrive()
+        self.assertIsNotNone(test_drive)
 
-def push_data_script_return_error():
-    pass
+    def test_init_class_no_submodule():
+        test_drive = RemoteDrive()
 
-def push_data_remote_folder_exist():
-    pass
 
-def push_data_remote_folder_not_exist():
-    pass
+    def test_init_class_no_creds_file():
+        pass
 
-def push_data_file_already_exist():
-    pass
+    def test_init_class_creds_file_exist():
+        pass
 
-def
+    def test_push_file_file_exist():
+        pass
+
+    def test_push_file_not_exist();
+        pass
+
+
+
 
