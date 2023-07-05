@@ -1,1 +1,1 @@
-from .sensor import bme
+from .sensor import Bme

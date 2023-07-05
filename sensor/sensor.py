@@ -2,7 +2,6 @@ import smbus2
 import bme280
 from time import sleep
 
-
 class Bme():
 	def __init__(self):
 		self.__port = 1
@@ -12,10 +11,4 @@ class Bme():
 		self.__calibration_params = bme280.load_calibration_params(self.__bus, self.__i2c_address)
 
 	def read_measurements(self):
-		data = bme280.sample( self.__bus, self.__i2c_address, self.__calibration_params)
-		return data
-
-
-
-
-bme=Bme()
+		return bme280.sample( self.__bus, self.__i2c_address, self.__calibration_params)

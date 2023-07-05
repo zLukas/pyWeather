@@ -1,10 +1,11 @@
 import sqlite3
 import os
-class MeasurementDataBase:
+class SqliteDataBase:
 
     def __init__(self):
 
-        CREATE_QUERY = '''CREATE TABLE measurements
+        CREATE_QUERY = '''
+                            CREATE TABLE measurements
                             (datetime    TEXT PRIMARY KEY NOT NULL,
                             sensor_id    TEXT             NOT NULL,
                             temperature  TEXT             NOT NULL,
@@ -29,7 +30,7 @@ class MeasurementDataBase:
             if type(items) == dict:
                 putQuery = '''
                                INSERT INTO measurements
-                               (datetime, sensor_id, temperature , humidity , pressure)\
+                               (datetime, sensor_id, temperature , humidity , pressure)
                                VALUES (?, ?, ?, ?, ?);
                            '''
                 
