@@ -18,11 +18,12 @@ def redirect_to_measurements():
 
 @app.route("/measurements", methods=["GET"])
 def get_measurements():
-    global sensor_callback
     response = {}
-    if sensor_callback is not None \
-        and sensor_callback.return_type is not None:
-        response = sensor_callback.function()
+    if sensor_callback is not None:
+        if sensor_callback.return_type is not None:
+            response = sensor_callback.function()
+        else:
+            response = {"error": "calback function returns None type"}
     else:
-        response = {"error": "calback function is not defined, or return type is None"}
+        response = {"error": "calback function is not defined"}
     return response
