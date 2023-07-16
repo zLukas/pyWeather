@@ -1,5 +1,4 @@
 import sqlite3
-import os
 class SqliteDataBase:
 
     def __init__(self):
@@ -14,15 +13,14 @@ class SqliteDataBase:
                        '''
         self._dbName = "measurements.db"
         self._table_name = "measurements"
-        self.status = ""
         self._sqlite3 = None
+        self._sqlite3 = sqlite3.connect(self._dbName)
         try:
-            self._sqlite3 = sqlite3.connect(self._dbName)
-            self.status = f"connected"
             self._sqlite3.execute(CREATE_QUERY)
+            self._sqlite3.commit()
             self._sqlite3.close()
-        except: 
-            print(" cannot create database ")
+        except sqlite3.OperationalError: 
+             pass
 
     def PutItem(self, items: dict):
         self._sqlite3 = sqlite3.connect(self._dbName)
@@ -34,8 +32,10 @@ class SqliteDataBase:
                                VALUES (?, ?, ?, ?, ?);
                            '''
 
-                values = (items['datetime'], items['sensor_id'],
-                    items['temperature'], items['humidity'], items['pressure'])
+                values = (items['datetime'], 1,
+                    items['temperature'], items['humididty'], items['pressure'])
                 self._sqlite3.execute(putQuery, values)
                 self._sqlite3.commit()
                 self._sqlite3.close()
+            else:
+                print("data is not in dict, format")
