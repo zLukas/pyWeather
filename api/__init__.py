@@ -1,6 +1,5 @@
 from flask import Flask
-from .config import Config
+from .app import app
 from .routes import RestApi
+from .callback import Callback
 
-app = Flask(__name__)
-app.config.from_object(Config)

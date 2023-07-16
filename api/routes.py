@@ -1,10 +1,10 @@
-from api import callback
-from api import app
+from .callback import Callback
+from .app import app
 from flask import redirect
 
 
 class RestApi:
-    def __init__(self, measurement_callback_obj: callback.Callback = None):
+    def __init__(self, measurement_callback_obj: Callback = None):
         self._measurement_callback = measurement_callback_obj
 
     @app.route("/", methods=["GET"])
