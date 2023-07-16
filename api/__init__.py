@@ -1,5 +1,5 @@
 from flask import Flask
 from .app import app
-from .app import bme_callback
+from .app import set_sensor_callback
 from .callback import Callback
 
