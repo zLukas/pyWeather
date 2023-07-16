@@ -17,11 +17,11 @@ def redirect_to_measurements():
     return redirect("/measurements")
 
 @app.route("/measurements", methods=["GET"])
-def get_measurements():
+def get_measurements(callback = sensor_callback):
     response = {}
-    if sensor_callback is not None:
-        if sensor_callback.return_type is not None:
-            response = sensor_callback.function()
+    if callback is not None:
+        if callback.return_type is not None:
+            response = callback.function()
         else:
             response = {"error": "calback function returns None type"}
     else:
