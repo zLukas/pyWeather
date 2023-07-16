@@ -1,4 +1,5 @@
 from flask import Flask
+form flask import redirect
 from .config import Config
 
 
