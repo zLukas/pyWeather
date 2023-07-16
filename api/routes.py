@@ -1,5 +1,4 @@
 from api import callback
-from flask import make_response
 from api import app
 from flask import redirect
 
