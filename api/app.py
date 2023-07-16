@@ -18,6 +18,7 @@ def redirect_to_measurements():
 
 @app.route("/measurements", methods=["GET"])
 def get_measurements():
+    global sensor_callback
     response = {}
     if sensor_callback is not None \
         and sensor_callback.return_type is not None:
