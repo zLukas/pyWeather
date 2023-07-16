@@ -8,11 +8,11 @@ class RestApi:
         self._measurement_callback = measurement_callback_obj
 
     @app.route("/", methods=["GET"])
-    def redirect_to_measurements(self):
+    def redirect_to_measurements():
         return redirect("/measurements")
 
     @app.route("/measurements", methods=["GET"])
-    def get_measurements(self):
+    def get_measurements():
         response = None
         if self._measurement_callback is not None \
            and self._measurement_callback.return_type is not None:
