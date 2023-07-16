@@ -33,41 +33,9 @@ class SqliteDataBase:
                                (datetime, sensor_id, temperature , humidity , pressure)
                                VALUES (?, ?, ?, ?, ?);
                            '''
-                
-                values = (items['datetime'], items['sensor_id'], items['temperature'], items['humidity'], items['pressure'])
+
+                values = (items['datetime'], items['sensor_id'],
+                    items['temperature'], items['humidity'], items['pressure'])
                 self._sqlite3.execute(putQuery, values)
                 self._sqlite3.commit()
                 self._sqlite3.close()
-
-if __name__ == "__main__":
-    if os.path.exists("measurements.db"):
-        os.remove("measurements.db")
-
-    db =  MeasurementDataBase()
-    if db.status != "disconnected":
-        d = {
-            "datetime" : "1-mar-2020",
-            "sensor_id": "1",
-            "temperature": "25.0",
-            "humidity" : "20.0",
-            "pressure" : "100",
-        }
-        db.PutItem(d)
-        d = {
-            "datetime" : "2-mar-2020",
-            "sensor_id": "1",
-            "temperature": "20.0",
-            "humidity" : "20.0",
-            "pressure" : "100",
-        }
-        db.PutItem(d)
-        d = {
-            "datetime" : "3-mar-2020",
-            "sensor_id": "1",
-            "temperature": "27.0",
-            "humidity" : "20.0",
-            "pressure" : "100",           
-        }
-        db.PutItem(d)
-    else:
-        print("cannot connect to database")
