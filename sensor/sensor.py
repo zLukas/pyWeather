@@ -1,6 +1,7 @@
 import smbus2
 import bme280
 from time import sleep
+from datetime import datetime as dt
 
 
 class Bme():
