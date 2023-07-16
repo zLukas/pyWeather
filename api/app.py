@@ -14,7 +14,7 @@ def redirect_to_measurements():
 @app.route("/measurements", methods=["GET"])
 def get_measurements():
     global bme_callback
-    response = None
+    response = {"error": "calback function is not defined"}
     if bme_callback is not None \
         and bme_callback.return_type is not None:
         response = bme_callback.function()
