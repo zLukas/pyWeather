@@ -19,3 +19,8 @@ def redirect_to_measurements():
 @app.route("/measurements", methods=["GET"])
 def get_measurements():
     return bme.read_formated()
+
+
+@app.route("/status", methods=["GET"])
+def heartbeat():
+    return {"status": "I'm Alive"}
