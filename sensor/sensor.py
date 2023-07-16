@@ -19,8 +19,7 @@ class Bme():
     def read_formated(self):
         data = self.read_raw()
         return {"datetime": dt.now().strftime("%m/%d/%Y-%H:%M:%S"),
-                "sensor_id": "1",
-                "temperature": f" {data.temperature} C",
-                "humididty": f" {data.humidity} %",
-                "pressure": f"{data.pressure} hPa"
+                "temperature": f"{round(data.temperature,2)} C",
+                "humididty": f"{round(data.humidity,2)} %",
+                "pressure": f"{round(data.pressure,2)} hPa"
                 }
