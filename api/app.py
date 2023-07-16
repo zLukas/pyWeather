@@ -1,12 +1,12 @@
+from telnetlib import BM
 from flask import Flask
 from flask import redirect
 from .config import Config
+from sensor import Bme
 
-
+bme = Bme()
 app = Flask("station")
 app.config.from_object(Config)
-
-sensor_callback = None
 
 def set_sensor_callback(callback):
     global sensor_callback
@@ -17,13 +17,5 @@ def redirect_to_measurements():
     return redirect("/measurements")
 
 @app.route("/measurements", methods=["GET"])
-def get_measurements(callback=sensor_callback):
-    response = {}
-    if callback.function is not None:
-        if callback.return_type is not None:
-            response = callback.function()
-        else:
-            response = {"error": "calback function returns None type"}
-    else:
-        response = {"error": "calback function is not defined"}
-    return response
+def get_measurements():
+    return bme.read_formated()
