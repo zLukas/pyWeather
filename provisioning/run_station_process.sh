@@ -1,10 +1,9 @@
 #! /bin/bash
 
 # check for existing processes
-if[ -f "run.pid"]
+if [ -f "run.pid" ]
 then
     kill -9 "$(cat run.pid)"
-    rm -f run.pid
 fi
 
 # run new instance
