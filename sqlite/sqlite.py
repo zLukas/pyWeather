@@ -5,11 +5,11 @@ class SqliteDataBase:
 
         CREATE_QUERY = '''
                             CREATE TABLE measurements
-                            (datetime    TEXT PRIMARY KEY NOT NULL,
-                            sensor_id    TEXT             NOT NULL,
-                            temperature  TEXT             NOT NULL,
-                            humidity     TEXT             NOT NULL,
-                            pressure     TEXT             NOT NULL);
+                            (datetime       TEXT PRIMARY KEY NOT NULL,
+                            sensor_id       TEXT             NOT NULL,
+                            temperature[C]  TEXT             NOT NULL,
+                            humidity[%]     TEXT             NOT NULL,
+                            pressure[hPa]   TEXT             NOT NULL);
                        '''
         self._dbName = "measurements.db"
         self._table_name = "measurements"
@@ -33,7 +33,7 @@ class SqliteDataBase:
                            '''
 
                 values = (items['datetime'], 1,
-                    items['temperature'], items['humididty'], items['pressure'])
+                    items['temperature'], items['humidity'], items['pressure'])
                 self._sqlite3.execute(putQuery, values)
                 self._sqlite3.commit()
                 self._sqlite3.close()
