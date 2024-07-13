@@ -3,8 +3,9 @@ import bme280
 from time import sleep
 from datetime import datetime as dt
 
+# temperature, humidity, pressure
 
-class Bme():
+class BME280():
     def __init__(self):
         self.__port = 1
         self.__i2c_address = 0x76
@@ -18,8 +19,4 @@ class Bme():
 
     def read_formated(self):
         data = self.read_raw()
-        return {"datetime": dt.now().strftime("%m/%d/%Y-%H:%M:%S"),
-                "temperature": f"{round(data.temperature,2)}",
-                "humidity": f"{round(data.humidity,2)}",
-                "pressure": f"{round(data.pressure,2)}"
-                }
+        return round(data.temperature,2), round(data.humidity,2), round(data.pressure,2)
