@@ -123,4 +123,4 @@ class SGP40:
 
     def getVocNoxIndex(self, temperature, humidity):
         sraw = self.measureRaw(temperature, humidity)
-        return self.voc_algorithm.process(sraw), self.nox_alghorithm.process(sraw)
+        return self.voc_algorithm.process(sraw), self.nox_algorithm.process(sraw)
