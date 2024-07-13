@@ -26,7 +26,7 @@ class SensorHat():
                 "temperature": createRecord(temperature, "C"),
                 "humididty": createRecord(humidity, "%%"),
                 "pressure": createRecord(pressure, "hPa"),
-                "uv": createRecord(uv, "UVI"),
-                "lux": createRecord(lux, "lx"),
-                "voc": createRecord(voc, "ppb"),
-                "nox": createRecord(nox, "ppb")}
+                "uv": createRecord(int(uv), "UVI"),
+                "lux": createRecord(int(lux), "lx"),
+                "voc": createRecord(int(voc), "ppb"),
+                "nox": createRecord(int(nox), "ppb")}
