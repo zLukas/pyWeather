@@ -1,4 +1,4 @@
-import datetime as dt
+from  datetime import datetime as dt
 from .bme280 import BME280
 from .ltr390 import LTR390
 from .tsl2591 import TSL2591
