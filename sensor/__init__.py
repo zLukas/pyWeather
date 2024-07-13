@@ -1,4 +1,4 @@
-import time
+import datetime as dt
 from .bme280 import BME280
 from .ltr390 import LTR390
 from .tsl2591 import TSL2591
@@ -13,12 +13,20 @@ class SensorHat():
         self.tsl2591 = TSL2591()
         self.spg40  = SGP40()
 
-    def getBme280Data(self):
-        return  self.bme280.read_formated()
-    def getLtr390Data(self):
-        return self.ltr390.UVS()
-    def getTsl2591Data(self):
-        return self.tsl2591.Lux()
-    def getSgp40Data(self):
-        temperature, humidity, _ = self.getBme280Data()
-        return self.spg40.getVocNoxIndex(temperature, humidity)
+    def getData(self):
+
+        createRecord = lambda value, unit: {"value": value, "unit": unit}
+
+        temperature, humidity, pressure = self.bme280.read_formated()
+        voc, nox = self.spg40.getVocNoxIndex(temperature, humidity)
+        uv = self.ltr390.UVI()
+        lux = self.tsl2591.Lux()
+
+        return {"time": dt.now().strftime("%m/%d/%Y-%H:%M:%S"),
+                "temperature": createRecord(temperature, "C"),
+                "humididty": createRecord(humidity, "%%"),
+                "pressure": createRecord(pressure, "hPa"),
+                "uv": createRecord(uv, "UVI"),
+                "lux": createRecord(lux, "lx"),
+                "voc": createRecord(voc, "ppb"),
+                "nox": createRecord(nox, "ppb")}

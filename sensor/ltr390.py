@@ -31,12 +31,19 @@ RATE_500MS = (0x4)
 RATE_1000MS = (0x5)
 RATE_2000MS = (0x6)
 
+
 # measurement Gain Range.
 GAIN_1  = (0x0)
 GAIN_3  = (0x1)# default
 GAIN_6 = (0x2)
 GAIN_9 = (0x3)
 GAIN_18 = (0x4)
+
+# sensitivity sensorcount/uvi
+UVS_SENSITIVITY=2300
+
+# type of window used, no window: W_FAC = 1
+W_FAC = 1
 
 
 class LTR390:
@@ -61,7 +68,7 @@ class LTR390:
 	def Write_Byte(self, cmd, val):
 		self.i2c.write_byte_data(self.address ,cmd, val)
 
-	def UVS(self):
+	def UVI(self):
 		# self.Write_Byte(LTR390_MAIN_CTRL, 0x0A) #  UVS in Active Mode
 		Data1 = self.Read_Byte(LTR390_UVSDATA)
 		Data2 = self.Read_Byte(LTR390_UVSDATA + 1)
@@ -69,19 +76,4 @@ class LTR390:
 		uv =  (Data3 << 16)| (Data2 << 8) | Data1
 		# UVS = Data3*65536+Data2*256+Data1
 		# print("UVS = ", UVS)
-		return uv
-
-ltr390 = LTR390()
-
-# if __name__ == '__main__':
-# 	sensor = LTR390()
-# 	time.sleep(1)
-# 	try:
-# 		while True:
-# 			UVS = sensor.UVS()
-# 			print("UVS: %d" %UVS)
-# 			time.sleep(0.5)
-
-# 	except KeyboardInterrupt:
-# 		# sensor.Disable()
-# 		exit()
+		return (uv/UVS_SENSITIVITY) * W_FAC

@@ -156,17 +156,3 @@ class TSL2591:
 
 		self.Write_Byte(AIHTL_REGISTER, set0dataH & 0xFF)
 		self.Write_Byte(AIHTH_REGISTER, set0dataH >> 8)
-
-tsl2591 = TSL2591()
-# if __name__ == '__main__':
-# 	sensor = TSL2591()
-# 	# sensor.SET_LuxInterrupt(20, 200)
-# 	time.sleep(1)
-# 	try:
-# 		while True:
-# 			lux = sensor.Lux()
-# 			print("Lux: %d" %lux)
-# 			time.sleep(0.5)
-			
-# 	except KeyboardInterrupt:
-# 		# sensor.Disable()
