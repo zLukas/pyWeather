@@ -11,10 +11,13 @@
   <div class="container">
     <h1>Pogoda we srodku</h1>
     <div class="sensor-data">
-      <p><strong>Temperatura:</strong> <span id="temp">{{ data.temperature or '--' }}</span> °C</p>
-      <p><strong>Wilgotność:</strong> <span id="humidity">{{ data.humidity or '--' }}</span> %</p>
-      <p><strong>Ciśnienie:</strong> <span id="pressure">{{ data.pressure or '--' }}</span> hPa</p>
-      <p><strong>Jakość powietrza:</strong> <span id="air">{{ data.air_quality or '--' }}</span></p>
+      <p><strong>Temperatura:</strong> <span id="temp">{{ data.temperature.value or '--' }}</span> °C</p>
+      <p><strong>Wilgotność:</strong> <span id="humidity">{{ data.humidity.value or '--' }}</span> %</p>
+      <p><strong>Ciśnienie:</strong> <span id="pressure">{{ data.pressure.value or '--' }}</span> hPa</p>
+      <p><strong>UV:</strong> <span id="UV">{{ data.uv.value or '--' }}</span> UVI </p>
+      <p><strong>Oświetlenie:</strong> <span id="lux">{{ data.lux.value or '--' }}</span> lx</p>
+      <p><strong>VOC:</strong> <span id="voc">{{ data.voc.value or '--' }}</span> ppb </p>
+      <p><strong>NOx:</strong> <span id="nox">{{ data.nox.value or '--' }}</span> ppb </p>
     </div>
   </div>
 </body>

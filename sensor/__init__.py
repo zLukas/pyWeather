@@ -24,7 +24,7 @@ class SensorHat():
 
         return {"time": dt.now().strftime("%m/%d/%Y-%H:%M:%S"),
                 "temperature": createRecord(temperature, "C"),
-                "humididty": createRecord(humidity, "%%"),
+                "humidity": createRecord(humidity, "%%"),
                 "pressure": createRecord(pressure, "hPa"),
                 "uv": createRecord(int(uv), "UVI"),
                 "lux": createRecord(int(lux), "lx"),
