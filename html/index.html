@@ -9,28 +9,13 @@
 </head>
 <body>
   <div class="container">
-    <h1>Pogoda przewodowa</h1>
+    <h1>Pogoda we srodku</h1>
     <div class="sensor-data">
-      <p><strong>Temperatura:</strong> <span id="temp">--</span> °C</p>
-      <p><strong>Wilgotność:</strong> <span id="humidity">--</span> %</p>
-      <p><strong>Ciśnienie:</strong> <span id="pressure">--</span> hPa</p>
-      <p><strong>Jakość powietrza:</strong> <span id="air">--</span></p>
+      <p><strong>Temperatura:</strong> <span id="temp">{{ data.temperature or '--' }}</span> °C</p>
+      <p><strong>Wilgotność:</strong> <span id="humidity">{{ data.humidity or '--' }}</span> %</p>
+      <p><strong>Ciśnienie:</strong> <span id="pressure">{{ data.pressure or '--' }}</span> hPa</p>
+      <p><strong>Jakość powietrza:</strong> <span id="air">{{ data.air_quality or '--' }}</span></p>
     </div>
   </div>
-
-  <script>
-    // Simulated data (replace this with fetch() if using a real API)
-    const sensorData = {
-      temperature: 24.3,
-      humidity: 56.2,
-      pressure: 1013.8,
-      air_quality: "Good"
-    };
-
-    document.getElementById('temp').textContent = sensorData.temperature;
-    document.getElementById('humidity').textContent = sensorData.humidity;
-    document.getElementById('pressure').textContent = sensorData.pressure;
-    document.getElementById('air').textContent = sensorData.air_quality;
-  </script>
 </body>
 </html>
