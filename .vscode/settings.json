@@ -1,7 +1,0 @@
-{
-    "ansible.python.interpreterPath": "/usr/local/bin/python3",
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.autopep8"
-    },
-    "python.formatting.provider": "none"
-}
